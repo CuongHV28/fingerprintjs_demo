@@ -25,7 +25,44 @@
     <script>
         // Initialize FingerprintJS and get the visitor ID
         async function getVisitorId() {
-            const fpPromise = FingerprintJS.load();
+            // const fpPromise = FingerprintJS.load();  // default options
+            
+            // Specify the components you want to use
+            const fpPromise = FingerprintJS.load({
+                components: {
+                    // Specify the components you want to use
+                    userAgent: true,
+                    language: true,
+                    colorDepth: true,
+                    deviceMemory: true,
+                    screenResolution: true,
+                    availableScreenResolution: true,
+                    timezoneOffset: true,
+                    timezone: true,
+                    sessionStorage: true,
+                    localStorage: true,
+                    indexedDb: true,
+                    addBehavior: true,
+                    openDatabase: true,
+                    cpuClass: true,
+                    platform: true,
+                    plugins: true,
+                    canvas: true,
+                    webgl: true,
+                    webglVendorAndRenderer: true,
+                    adBlock: true,
+                    hasLiedLanguages: true,
+                    hasLiedResolution: true,
+                    hasLiedOs: true,
+                    hasLiedBrowser: true,
+                    touchSupport: true,
+                    fonts: true,
+                    fontsFlash: true,
+                    audio: true,
+                    enumerateDevices: true,
+                    // Add or remove components as needed
+                }
+            });
             const fp = await fpPromise;
             const result = await fp.get();
 
@@ -38,9 +75,7 @@
         // Call the function to get the visitor ID
         // getVisitorId();
 
-        // Wait for the document to be ready (jQuery)
         $(document).ready(async function () {
-            debugger;
             let visitorId = await getVisitorId(); // Variable to store the visitor ID
 
             console.log("visitorId", visitorId);
