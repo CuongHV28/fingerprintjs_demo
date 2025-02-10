@@ -66,6 +66,10 @@
             const fp = await fpPromise;
             const result = await fp.get();
 
+            // Combine the gathered information into a single string
+            debugger;
+            const combinedInfo = JSON.stringify(result.components);
+
             // Store the visitor ID in the variable
             return result.visitorId;
 
